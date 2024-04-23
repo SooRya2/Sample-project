@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './RentalChoice.css';
-
+import RentalInfo from './RentalInfo';
+import { Link } from 'react-router-dom';
 
 const rentalchoice = () => {
 
@@ -10,8 +11,8 @@ const rentalchoice = () => {
             <br/>
             <br/>
             <div style={{ display: 'flex' }}>
-                <button style={{ marginRight: '10px' }}>Search Rental using Service Number</button>
-                <button>Search Rental using rent</button>
+                <button style={{ marginRight: '10px' } }><Link to="/Service">Search Rental using Service Number</Link></button>
+                <button><Link to="/Rent">Search Rental using rent</Link></button>
             </div>
         </div>
     )
