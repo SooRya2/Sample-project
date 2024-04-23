@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { RentalService } from '../service/Rental.service';
+import { useNavigate } from 'react-router-dom';
 
 export const RentalDashboard = () => {
-
+    const navigate=useNavigate();
     const [dashboard, setdashboard] = useState([]);
 
     const fetchdata = async () => {
@@ -34,6 +35,7 @@ export const RentalDashboard = () => {
            
             ))}
              </ul>
+             <button onClick={() => navigate(-1)}>Go back</button>
         </div>
     )
 }

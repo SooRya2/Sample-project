@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { RentalService } from '../service/Rental.service';
 import './RentalInfo.css';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const RentalInfo = () => {
-
+    const navigate = useNavigate();
     const [rental, setrental] = useState('');
     const [data, setdata] = useState([]);
 
@@ -13,13 +15,19 @@ const RentalInfo = () => {
             const rentalservice = RentalService();
             const rentalData = await rentalservice.getrentbyid(rental)
             setdata(rentalData);
-            console.log("Data fetched",rentalData);
+            console.log("Data fetched", rentalData);
         }
         catch (error) {
             console.log("Rental not fetched", error);
         }
     }
 
+
+        const handleGoBack = () => {
+            const history = useHistory();
+            history.goBack(); 
+        };
+    
 
     return (
         <div>
@@ -31,15 +39,15 @@ const RentalInfo = () => {
                     onChange={(e) => setrental(e.target.value)}
                 />
             </label>
-            <br/>
+            <br />
             <button type="submit" onClick={fetchdata}>Search property</button>
-            
-            <br/>
+            <button onClick={() => navigate(-1)}>Go back</button>
+            <br />
             <div>
-               <div>{data.propertyName}</div>
-               <div>{data.electricityServiceNo}</div>
-               <div>{data.rent}</div>
-               <div>{data.advance}</div>
+                <div>{data.propertyName}</div>
+                <div>{data.electricityServiceNo}</div>
+                <div>{data.rent}</div>
+                <div>{data.advance}</div>
             </div>
 
         </div>

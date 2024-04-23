@@ -1,8 +1,8 @@
 import react,{useState} from 'react';
 import { RentalService } from '../service/Rental.service';
-
+import { useNavigate } from 'react-router-dom';
 const RentalInfofromRent=()=>{
-
+    const navigate=useNavigate();
     const [data,setdata]=useState([]);
     const [rental,setrental]=useState('');
 
@@ -31,6 +31,7 @@ const RentalInfofromRent=()=>{
                 onChange={(e)=>setrental(e.target.value)}/>
             </label>
             <button onClick={fetchdata}>Search</button>
+            <button onClick={() => navigate(-1)}>Go back</button>
             <br/>
             <br/>
             <div>
