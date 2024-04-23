@@ -2,7 +2,7 @@
 import React, { useState,useEffect } from 'react';
 import './Rentalform.css';
 import {RentalService} from '../service/Rental.service';
-
+import Navbar from './Navbar';
 
 function Rentalform() {
 
@@ -44,7 +44,9 @@ function Rentalform() {
     };
 
     return (
+        
         <div>
+            
             <h2>Rentals Management</h2>
             <br />
             <br />
@@ -99,7 +101,9 @@ function Rentalform() {
                     </li>
                 ))}
             </ul> */}
+            <Navbar/>
         </div>
+       
     );
 }
 

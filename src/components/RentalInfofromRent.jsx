@@ -11,8 +11,9 @@ const RentalInfofromRent=()=>{
 
         try{
             const rentalservice=RentalService();
-            setdata(rentalservice.getbyrent(rental));
-            console.log("fetched details",data);
+            const rentaldata=await rentalservice.getbyrent(rental);
+            setdata(rentaldata);
+            console.log("fetched details",rentaldata);
         }
         catch(error)
         {
@@ -25,8 +26,8 @@ const RentalInfofromRent=()=>{
         <div>
             <label>Enter the rent amount to check the property
             <input
-                type="number"
-                value="rent"
+                type="text"
+                name="rent"
                 onChange={(e)=>setrental(e.target.value)}/>
             </label>
             <button onClick={fetchdata}>Search</button>

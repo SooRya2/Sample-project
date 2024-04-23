@@ -33,6 +33,7 @@ const RentalInfo = () => {
             </label>
             <br/>
             <button type="submit" onClick={fetchdata}>Search property</button>
+            
             <br/>
             <div>
                <div>{data.propertyName}</div>
