@@ -1,0 +1,26 @@
+/* styles.css */
+
+.dashboard {
+    padding: 20px;
+  }
+  
+  .dashboard ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .dashboard li {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+  }
+  
+  .dashboard li > div {
+    margin-bottom: 5px;
+  }
+  
+  .dashboard li > div:last-child {
+    margin-bottom: 0;
+  }
+  
