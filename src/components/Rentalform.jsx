@@ -43,8 +43,24 @@ function Rentalform() {
         setNewProperty({ ...newProperty, [name]: value });
     };
 
+    const updatehandler=async (e)=>{
+        e.preventDefault();
+        const rentalservice=RentalService();
+
+        try{
+            await rentalservice.updaterental(newProperty);
+            console.log("updated details",newProperty);
+            alert("Rental Updated");
+        }
+        catch(error)
+        {
+            console.log("Details not fetched",error)
+            alert("Rental not updated");
+        }
+    }
+
     return (
-        
+       
         <div>
             
             <h2>Rentals Management</h2>
@@ -89,21 +105,12 @@ function Rentalform() {
                 </label>
               
                 <button type="submit">Add Property</button>
+                <button type="button" onClick={updatehandler}>Update Property</button>
             </form>
-            {/* <h3>Existing Properties</h3>
-            <ul>
-                {properties.map((property, index) => (
-                    <li key={index}>            
-                        <strong>Name:</strong> {property.name},{''}
-                        <strong>Electricity Service No:</strong> {property.electricityServiceNo},{''}
-                        <strong>Rent Amount:</strong> {property.rent},{''}
-                        <strong>Advance Amount:</strong> {property.advance},{''}
-                    </li>
-                ))}
-            </ul> */}
+
             <Navbar/>
         </div>
-       
+        
     );
 }
 

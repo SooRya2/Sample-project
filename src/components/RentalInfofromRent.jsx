@@ -1,6 +1,8 @@
 import react,{useState} from 'react';
 import { RentalService } from '../service/Rental.service';
 import { useNavigate } from 'react-router-dom';
+import './RentalInfo.css';
+
 const RentalInfofromRent=()=>{
     const navigate=useNavigate();
     const [data,setdata]=useState([]);
@@ -23,7 +25,7 @@ const RentalInfofromRent=()=>{
 
 
     return (
-        <div>
+        <div className="container">
             <label>Enter the rent amount to check the property
             <input
                 type="text"
@@ -32,9 +34,8 @@ const RentalInfofromRent=()=>{
             </label>
             <button onClick={fetchdata}>Search</button>
             <button onClick={() => navigate(-1)}>Go back</button>
-            <br/>
-            <br/>
-            <div>
+            
+            <div className="property-details">
                <div>{data.propertyName}</div>
                <div>{data.electricityServiceNo}</div>
                <div>{data.rent}</div>

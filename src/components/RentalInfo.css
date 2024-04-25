@@ -1,13 +1,14 @@
 div.container {
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-bottom: 1rem;
   }
   
   div.container label {
-    font-weight: bold;
+    font-weight:bold;
   }
   
   div.container input[type="text"] {
@@ -24,6 +25,7 @@ div.container {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 1.5rem;
   }
   
   div.container button:hover {
@@ -31,7 +33,7 @@ div.container {
   }
   
   div.container div.result {
-    margin-top: 20px;
+    margin-top: 40px;
   }
   
   div.container div.result div {

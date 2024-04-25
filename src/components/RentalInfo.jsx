@@ -1,20 +1,18 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { RentalService } from '../service/Rental.service';
 import './RentalInfo.css';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const RentalInfo = () => {
     const navigate = useNavigate();
-    const [rental, setrental] = useState('');
-    const [data, setdata] = useState([]);
+    const [rental, setRental] = useState('');
+    const [data, setData] = useState({});
 
-
-    const fetchdata = async (e) => {
+    const fetchdata = async () => {
         try {
             const rentalservice = RentalService();
-            const rentalData = await rentalservice.getrentbyid(rental)
-            setdata(rentalData);
+            const rentalData = await rentalservice.getrentbyid(rental);
+            setData(rentalData);
             console.log("Data fetched", rentalData);
         }
         catch (error) {
@@ -22,34 +20,29 @@ const RentalInfo = () => {
         }
     }
 
-
-        const handleGoBack = () => {
-            const history = useHistory();
-            history.goBack(); 
-        };
-    
+    const handleGoBack = () => {
+        navigate(-1);
+    };
 
     return (
-        <div>
-
+        <div className="container">
             <label> Enter the Service No to View the property
                 <input
                     type="text"
                     name="electricityServiceNo"
-                    onChange={(e) => setrental(e.target.value)}
+                    onChange={(e) => setRental(e.target.value)}
                 />
             </label>
             <br />
             <button type="submit" onClick={fetchdata}>Search property</button>
-            <button onClick={() => navigate(-1)}>Go back</button>
+            <button onClick={handleGoBack}>Go back</button>
             <br />
-            <div>
-                <div>{data.propertyName}</div>
-                <div>{data.electricityServiceNo}</div>
-                <div>{data.rent}</div>
-                <div>{data.advance}</div>
+            <div className="property-details">
+                <div>Property Name: ={data.propertyName}</div>
+                <div>Electricity Service No: {data.electricityServiceNo}</div>
+                <div>Rent: {data.rent}</div>
+                <div>Advance: {data.advance}</div>
             </div>
-
         </div>
     )
 }
