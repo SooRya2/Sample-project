@@ -1,26 +1,31 @@
-/* styles.css */
 
-.dashboard {
-    padding: 20px;
-  }
-  
-  .dashboard ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .dashboard li {
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
-  }
-  
-  .dashboard li > div {
-    margin-bottom: 5px;
-  }
-  
-  .dashboard li > div:last-child {
-    margin-bottom: 0;
-  }
-  
+.dashboard-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.rental-item {
+  background-color: #ef3535;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.rental-item div {
+  margin-bottom: 5px;
+}
+
+button {
+  background-color: #1bbb1d;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #fd4816;
+}

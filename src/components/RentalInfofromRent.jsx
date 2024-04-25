@@ -1,8 +1,10 @@
 import react,{useState} from 'react';
 import { RentalService } from '../service/Rental.service';
+import { useNavigate } from 'react-router-dom';
+import './RentalInfo.css';
 
 const RentalInfofromRent=()=>{
-
+    const navigate=useNavigate();
     const [data,setdata]=useState([]);
     const [rental,setrental]=useState('');
 
@@ -11,8 +13,9 @@ const RentalInfofromRent=()=>{
 
         try{
             const rentalservice=RentalService();
-            setdata(rentalservice.getbyrent(rental));
-            console.log("fetched details",data);
+            const rentaldata=await rentalservice.getbyrent(rental);
+            setdata(rentaldata);
+            console.log("fetched details",rentaldata);
         }
         catch(error)
         {
@@ -22,17 +25,17 @@ const RentalInfofromRent=()=>{
 
 
     return (
-        <div>
+        <div className="container">
             <label>Enter the rent amount to check the property
             <input
-                type="number"
-                value="rent"
+                type="text"
+                name="rent"
                 onChange={(e)=>setrental(e.target.value)}/>
             </label>
             <button onClick={fetchdata}>Search</button>
-            <br/>
-            <br/>
-            <div>
+            <button onClick={() => navigate(-1)}>Go back</button>
+            
+            <div className="property-details">
                <div>{data.propertyName}</div>
                <div>{data.electricityServiceNo}</div>
                <div>{data.rent}</div>
